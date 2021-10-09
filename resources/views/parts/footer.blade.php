@@ -26,7 +26,7 @@
                     <address>
                         <dl>
                             <dt>8COLOGY</dt>
-                            <dd>Mail 8cology@gmail.com</dd>
+                            <dd>Mail:8cology@gmail.com</dd>
                         </dl>
                     </address>
                 </div>
