@@ -1,0 +1,22 @@
+var spreadsheet = SpreadsheetApp.openById("sheetID名前");
+var fpSheet = spreadsheet.getSheetByName("sheetの名前");
+var logSheet = spreadsheet.getSheetByName("sheetの名前");
+
+function piLog() {
+  var lastRow = logSheet.getLastRow();
+  var ts = new Date();
+  
+  var sec = 0.5;
+  Utilities.sleep(sec * 1000);
+ 
+  var we = fpSheet.getRange(2, 1).getValue();
+  
+  if(we!= "" || we === 0) { 
+    //logSheet.getRange(lastRow, 1).setValue(ts);
+    //logSheet.getRange(lastRow, 2).setValue(we);
+    //ログ固定
+    logSheet.getRange(2, 1).setValue(ts);
+    logSheet.getRange(2, 2).setValue(we);    
+    fpSheet.getRange(2, 1, 1, 1).clearContent();
+  }
+}

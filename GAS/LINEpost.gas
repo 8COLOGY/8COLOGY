@@ -1,0 +1,194 @@
+// 利用しているシート
+var SHEET_ID = 'SHEET_ID';
+// 利用しているSSのシート名
+var SHEET_NAME = 'LINE_send';
+// LINE Message API アクセストークン
+var ACCESS_TOKEN = ' APIトークン';
+// 通知URL
+var PUSH = "https://api.line.me/v2/bot/message/push";
+// リプライ時URL
+var REPLY = "https://api.line.me/v2/bot/message/reply";
+// プロフィール取得URL
+var PROFILE = "https://api.line.me/v2/profile";
+
+// SSからデータを取得
+function getData() {
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
+  var data = sheet.getDataRange().getValues();
+  return data.map(function(row) { return {key: row[0], value: row[1], type: row[2]}; });
+}
+
+/**
+ * doPOST
+ * POSTリクエストのハンドリング
+ */
+function doPost(e) {
+  var json = JSON.parse(e.postData.contents);
+  reply(json);
+  push(json);
+}
+
+/** 
+ * doGet
+ * GETリクエストのハンドリング
+ */
+function doGet(e) {
+    return ContentService.createTextOutput("SUCCESS");
+}
+
+/** 
+ * reply
+ * ユーザからのアクションに返信する
+ */
+function reply(data) {
+  // POST情報から必要データを抽出
+  var lineUserId = data.events[0].source.userId;
+  var postMsg    = data.events[0].message.text;
+  var replyToken = data.events[0].replyToken;
+  var action    = data.events[0].message.action;
+  // 記録用に検索語とuserIdを記録
+  debug(action, lineUserId);
+  
+  if(postMsg === "容器を回収する"){
+    var replyText = '容器の回収ですね。'  +'\n' + '少々お待ちください。';
+  }else{
+    var replyText = '実行方法が間違っています';
+  }
+  sendMessage(replyToken, replyText);
+   
+}
+
+// LINE messaging apiにJSON形式でデータをPOST
+function sendMessage(replyToken, replyText) {  
+  // replyするメッセージの定義
+  var postData = {
+    "replyToken" : replyToken,
+    "messages" : [
+      {
+        "type" : "text",
+        "text" : replyText
+      }
+    ]
+  };
+  return postMessage(postData);
+}
+
+// LINE messaging apiにJSON形式でデータをPOST
+function postMessage(postData) {  
+
+  // リクエストヘッダ
+  var headers = {
+    "Content-Type" : "application/json; charset=UTF-8",
+    "Authorization" : "Bearer " + ACCESS_TOKEN
+  };
+  // POSTオプション作成
+  var options = {
+    "method" : "POST",
+    "headers" : headers,
+    "payload" : JSON.stringify(postData)
+  };
+  return UrlFetchApp.fetch(REPLY, options);      
+}
+
+
+/** 
+ * push
+ * ユーザへ判定結果を返信する
+ */
+
+//メッセージを送信する関数
+function push(data) {
+  // POST情報から必要データを抽出
+  var lineUserId = data.events[0].source.userId;
+  var postMsg    = data.events[0].message.text;
+  var action     = data.events[0].message.action;
+  //userIDを識別する
+  var logSheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName('log');
+  var checkUserID = logSheet.getRange(2, 7).getValue()
+  
+  // 判定の結果を識別する
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName('sheetの名前');
+  var checkcolum = sheet.getRange(2, 8).getValue()
+  var checkmsg = sheet.getRange(2, 9).getValue()
+  
+  // 時間遅延処理 ミリ秒単位
+  var staySecond = 5;
+  
+  if(checkcolum === 3){
+    var message = '対象です！ポイントGET';
+  }else if(checkmsg === "RasPinowork"){
+    var message = '注意事項を確認ください';
+  }else{
+    var message = "対象外です";
+  }
+
+  Utilities.sleep(staySecond * 1000);
+  sendpushMessage(checkUserID, message);
+  clearcells();
+  
+};
+
+// LINE messaging apiにJSON形式でデータをPOST
+function sendpushMessage(checkUserID, message) {  
+  // pushメッセージの定義
+  var postData = {
+    "to" : checkUserID,
+    "messages" : [
+      {
+        "type" : "text",
+        "text" : message
+      }
+    ]
+  };
+  
+  return pushsendMessage(postData);
+}
+
+// LINE messaging apiにJSON形式でデータをPOST
+function pushsendMessage(postData) {    
+  // リクエストヘッダ
+  var headers = {
+    "Content-Type" : "application/json; charset=UTF-8",
+    "Authorization" : "Bearer " + ACCESS_TOKEN
+  };
+  // POSTオプション作成
+  var options = {
+      "method" : "POST",
+      "headers" : headers,
+      "payload" : JSON.stringify(postData)
+  };
+  return UrlFetchApp.fetch(PUSH, options);
+}
+
+/** ユーザーのアカウント名を取得 */
+function getUserDisplayName(userId) {
+  var url = 'https://api.line.me/v2/bot/profile/' + userId;
+  var userProfile = UrlFetchApp.fetch(url,{
+    'headers': {
+    'Authorization' :  'Bearer ' + ACCESS_TOKEN,
+    },
+  })
+  return JSON.parse(userProfile).displayName;
+}
+
+// debugシートに値を記載
+function debug(text, userId) {
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName('sheetの名前');
+  var logSheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName('log');
+  //logシートに値を記載
+  var date = new Date();
+  var userName = getUserDisplayName(userId);
+  sheet.appendRow([userId, userName, text, Utilities.formatDate( date, 'Asia/Tokyo', 'yyyy-MM-dd HH:mm:ss')]);
+  logSheet.getRange(2, 4).setValue(1);   
+  logSheet.getRange(2, 5).setValue(userName); 
+  logSheet.getRange(2, 6).setValue(Utilities.formatDate( date, 'Asia/Tokyo', 'yyyy-MM-dd HH:mm:ss'));  
+  logSheet.getRange(2, 7).setValue(userId); 
+ 
+}
+
+function clearcells() {
+  // セル範囲を取得
+  var range = logSheet.getRange("A2:G2");
+  // セル範囲にある値のみクリア
+  range.clearContent();
+}
