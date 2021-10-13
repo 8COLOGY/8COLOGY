@@ -1,0 +1,79 @@
+<<<<<<< HEAD
+/*=========background===============*/
+=======
+/*=========企業理念===============*/
+>>>>>>> origin/master
+body{
+  padding: 0;
+  margin: 0;
+}
+<<<<<<< HEAD
+=======
+.image{
+  position: relative;
+  padding-top: 200px;  
+}
+.philosophy{
+    opacity: 0.1;
+}
+
+>>>>>>> origin/master
+p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  padding-top: 150px;
+  font-size: 1.0em;
+}
+<<<<<<< HEAD
+img{
+  width: 100%;
+}
+/*=========philosophy===============*/
+.philo{
+  justify-content: center;
+  align-items:center;
+  position: relative;
+  text-align: center; 
+  padding-top: 400px;  
+}
+.philosophy{
+  opacity: 0.1;
+}
+
+/*=========infomation===============*/
+=======
+
+img{
+  width: 100%;
+}
+/*=========企業概要===============*/
+>>>>>>> origin/master
+.info{
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 200px;  
+}
+
+.infomation{
+<<<<<<< HEAD
+  opacity: 0.1;
+=======
+    opacity: 0.1;
+>>>>>>> origin/master
+}
+
+.infomation_text{ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  padding-top: 200px;
+  font-size: 1.0em;
+}
