@@ -3,10 +3,8 @@
 プラスチックのリサイクル促進サービス
  
 # DEMO
-Webサイト 
-https://www.8cology.com/
-LINE
-https://line.me/R/ti/p/@266kegaz?from=page
+- Webサイト  https://www.8cology.com/
+- LINE https://line.me/R/ti/p/@266kegaz?from=page
  
 # Features
  

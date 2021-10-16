@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
-<<<<<<< HEAD
 <!--                                                                        
 +-+-+-+-+-+-+-+
 |8|C|O|L|O|G|Y|
 +-+-+-+-+-+-+-+                                                                     
  -->
-=======
->>>>>>> origin/master
 
 <head>
     <meta charset="UTF-8">
@@ -26,18 +23,10 @@
     <!-- Topロゴ -->
     <section id="section_top">
         <div class="toplogo">
-<<<<<<< HEAD
             <img style="max-width: 100%; height: auto;" src="img/logo_l.png" alt="toplogo" class="d-block mx-auto img-fluid">
         </div>
     </section>
     <!-- Topイメージ -->
-=======
-            <img src="img/logo_l.png" alt="toplogo">
-        </div>
-    </section>
-    <!-- Topイメージ -->
-    <!-- <div class="box mx-auto"></div> -->
->>>>>>> origin/master
     <img src="img/topimg.png" class="topimage d-block mx-auto img-fluid" alt="Responsive image">
     <label id="btn_center" for="trigger" class="open_btn_now">今すぐリサイクルを始める</label>
     <label id="btn_center" for="trigger" class="open_btn_login_center">>>ログイン</label>
@@ -45,25 +34,20 @@
     <div class="about">
         <section id="section_about">
             <h3 class=”text_title”><span style="color:forestgreen;">ABOUT</span></h3>
-            <h4 class=”text_subtitle_about”>8COLOGYについて</h4>
+            <h4 class=”text_subtitle_about”>8COLOGYとは</h4>
             <div class="text_title_details_about">
-                <dl>
-                    <dd class="fw-bold">8COLOGYは、廃プラスチックのリサイクルを推進するサービスです。</dd>
-                    <dd>世の中のもったいないをなくしたい。</dd>
-                    <dd>ごみが少ない世界を作りたい。</dd>
-                    <dd>大きな時代の変化の中で、廃プラスチックの再生資源化を推進していきたい。</dd>
-                    <dd>そんな思いから、「8COLOGY」は歩みを始めています。</dd>
-<<<<<<< HEAD
-                    <dd>地球環境の目の敵にされがちなプラスチック。</dd>
-                    <dd>元来は石油由来の貴重な資源です。</dd>
-                    <dd>廃プラスチックの安易な焼却・埋め立てを行わず、</dd>
-                    <dd>リサイクルによる資源循環が進めば、</dd>
-                    <dd>持続可能な社会の一端を担う素材として活用が期待できます。</dd>
-=======
-                    <dd>廃プラスチックの再生資源化はもちろんのこと、</dd>
-                    <dd>もったいないをなくすためのサービスを提供していきます。</dd>
->>>>>>> origin/master
-                </dl>
+                <p>
+                <p class="fw-bold">8COLOGYは、廃プラスチックのリサイクルを推進するサービスです。</p>
+                <br>世の中のもったいないをなくしたい。
+                <span>ごみが少ない世界を作りたい。</span>
+                大きな時代の変化の中で、廃プラスチックの<span>再生資源化を推進していきたい。</span>
+                <span>そんな思いから、「8COLOGY」は歩みを始めています。</span>
+                <span>地球環境の目の敵にされがちなプラスチック。</span>
+                <span>元来は石油由来の貴重な資源です。</span>
+                <span>廃プラスチックの安易な焼却・埋め立てを行わず、</span>
+                <span>リサイクルによる資源循環が進めば、</span>
+                持続可能な社会の一端を担う素材として<span>活用が期待できます。</span>
+                </p>
             </div>
         </section>
     </div>
@@ -76,7 +60,6 @@
             <h3><span style="color:forestgreen;" class="count">12345</span>トン</h3>
         </section>
     </div>
-<<<<<<< HEAD
 
     <div class="howto">
         <section id="section_howto">
@@ -125,44 +108,6 @@
                 </div>
             </div>
         </section>
-=======
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <h4 class="step howto_fonts" style="color:forestgreen;">STEP1</h4><img src="img/wash.png" alt="news_img" width="350" height="350" class="rounded">
-                <div class="news_details">
-                    <dl>
-                        <dt>1.プラスチック容器をよく洗う</dt>
-                    </dl>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h4 class="step howto_fonts" style="color:forestgreen;">STEP2</h4><img src="img/search_dustbox.png" alt="news_img" width="320" height="350" class="rounded">
-                <div class="news_details">
-                    <dl>
-                        <dt>2.近くの回収BOXを探す</dt>
-                    </dl>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h4 class="step howto_fonts" style="color:forestgreen;">STEP3</h4><img src="img/dustbox.png" alt="news_img" width="400" height="350" class="rounded">
-                <div class="news_details">
-                    <dl>
-                        <dt>3.回収BOXに使用済みプラスチック容器を入れる</dt>
-                    </dl>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h4 class="step" style="color:forestgreen;">STEP4</h4><img src="img/coupon.png" alt="news_img" width="350" height="350" class="rounded">
-                <div class="news_details">
-                    <dl>
-                        <dt>4.COUPON獲得！</dt>
-                    </dl>
-                </div>
-            </div>
-        </div>
-    </div>
->>>>>>> origin/master
     </div>
     @include("parts.footer")
     <!-- 数字のカウントアップjs -->

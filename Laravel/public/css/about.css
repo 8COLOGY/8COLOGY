@@ -1,23 +1,8 @@
-<<<<<<< HEAD
 /*=========background===============*/
-=======
-/*=========企業理念===============*/
->>>>>>> origin/master
 body{
   padding: 0;
   margin: 0;
 }
-<<<<<<< HEAD
-=======
-.image{
-  position: relative;
-  padding-top: 200px;  
-}
-.philosophy{
-    opacity: 0.1;
-}
-
->>>>>>> origin/master
 p{
   position: absolute;
   top: 50%;
@@ -28,43 +13,40 @@ p{
   padding-top: 150px;
   font-size: 1.0em;
 }
-<<<<<<< HEAD
-img{
-  width: 100%;
+/* text折り返しblock */
+p span {
+  display: inline-block;
 }
 /*=========philosophy===============*/
+.tree{
+  justify-content: center;
+  align-items:center;
+  position: relative; 
+  padding-top: 70px; 
+}
 .philo{
   justify-content: center;
   align-items:center;
   position: relative;
   text-align: center; 
-  padding-top: 400px;  
+  padding-top: 120px;  
 }
 .philosophy{
   opacity: 0.1;
+  width: 100%;
 }
 
 /*=========infomation===============*/
-=======
-
-img{
-  width: 100%;
-}
-/*=========企業概要===============*/
->>>>>>> origin/master
 .info{
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 200px;  
+  padding-top: 250px;  
 }
 
 .infomation{
-<<<<<<< HEAD
   opacity: 0.1;
-=======
-    opacity: 0.1;
->>>>>>> origin/master
+  width: 100%;
 }
 
 .infomation_text{ 
