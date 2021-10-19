@@ -5,6 +5,7 @@
 # DEMO
 - Webサイト  https://www.8cology.com/
 - LINE https://line.me/R/ti/p/@266kegaz?from=page
+- ※LINEは実機確認の対象ですが念の為、UPしています。
  
 # Features
  
@@ -33,5 +34,7 @@ GAS、Raspberry PiはGoogleのAPI Key、jsonファイルが必要
  
 # Author
  
-* 作成者 broccoli1983 514daisuke
+* 作成者 
+- https://github.com/broccoli1983 
+- https://github.com/514daisuke         
  
